@@ -52,7 +52,7 @@ class TodoListsController < ApplicationController
     @todo_list.destroy
 
     respond_to do |format|
-      format.html { redirect_to todo_lists_url, notice: "Todo list was successfully destroyed." }
+      format.html { redirect_to root_url, notice: "Todo list was successfully destroyed." }
       format.json { head :no_content }
     end
   end
