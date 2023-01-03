@@ -8,8 +8,14 @@ class TodoItemsController < ApplicationController
     end
 
     def complete
-        @todo_item.update_attribute(:completed_at, Time.now)
-        redirect_to @todo_list, notice: "Todo item completed"
+        if @todo_item.completed?
+            puts('hello 12')
+            @todo_item.update_attribute(:completed_at, nil)
+            redirect_to @todo_list, notice: "Todo item marked incomplete"
+        else
+            @todo_item.update_attribute(:completed_at, Time.now)
+            redirect_to @todo_list, notice: "Todo item completed"
+        end
     end
 
     def destroy
